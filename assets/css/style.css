@@ -156,6 +156,9 @@ article {
   padding: 15px;
   box-shadow: var(--shadow-1);
   z-index: 1;
+  width: 92%; /* Set consistent width for all panels on mobile */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .separator {
@@ -285,16 +288,24 @@ article.active {
 \*-----------------------------------*/
 
 main {
-  margin-bottom: 30px; /* Reduced from 60px */
-  margin-top: 10px; /* Added small margin at top */
+  margin-bottom: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: auto;
-  min-height: calc(100vh - 80px); /* Reduced from 120px to allow more content space */
+  min-height: calc(100vh - 80px);
   overflow: visible;
-  padding: 10px 0; /* Reduced from 20px */
+  padding: 15px 0;
+}
+
+/* Main content container for proper spacing */
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -310,8 +321,7 @@ main {
   max-height: 112px;
   overflow: hidden;
   transition: var(--transition-2);
-  min-width: 260px; /* Reduced minimum width from 300px */
-  width: auto; /* Allow width to be determined by content */
+  min-width: 280px;
 }
 
 .sidebar.active { max-height: 405px; }
