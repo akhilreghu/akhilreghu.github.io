@@ -1,5 +1,3 @@
-
-
 :root {
 
   /**
@@ -180,6 +178,7 @@ article {
   color: var(--orange-yellow-crayola);
   box-shadow: var(--shadow-1);
   z-index: 1;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .icon-box::before {
@@ -288,7 +287,9 @@ article.active {
 main {
   margin: 15px 12px;
   margin-bottom: 75px;
-  min-width: 259px;
+  min-width: 300px; /* Updated minimum width */
+  padding: 0 10px; /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 
@@ -304,6 +305,8 @@ main {
   max-height: 112px;
   overflow: hidden;
   transition: var(--transition-2);
+  min-width: 260px; /* Reduced minimum width from 300px */
+  width: auto; /* Allow width to be determined by content */
 }
 
 .sidebar.active { max-height: 405px; }
@@ -391,13 +394,14 @@ main {
 .contact-item {
   min-width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start for better alignment */
   gap: 16px;
 }
 
 .contact-info {
   max-width: calc(100% - 46px);
   width: calc(100% - 46px);
+  overflow: hidden; /* Ensure content is contained */
 }
 
 .contact-title {
@@ -410,26 +414,14 @@ main {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block; /* Ensure proper block display */
+  width: 100%; /* Take full width of container */
 }
 
 .contact-info address { font-style: normal; }
-
-.social-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-  padding-bottom: 4px;
-  padding-left: 7px;
-}
-
-.social-item .social-link {
-  color: var(--light-gray-70);
-  font-size: 18px;
-}
-
-
-.social-item .social-link:hover { color: var(--light-gray); }
 
 
 
@@ -812,6 +804,14 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+}
+
+/* Add styling for degree names to make them gold/yellow */
+.degree-name {
+  color: var(--vegas-gold);
+  font-weight: var(--fw-400);
+  line-height: 1.6;
+  margin-top: 7px;
 }
 
 
@@ -1211,6 +1211,68 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 
 /*-----------------------------------*\
+  #SOCIAL ICONS
+\*-----------------------------------*/
+
+/* Add styles for horizontal social icons with gold/yellow color */
+.social-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.social-link {
+  color: var(--orange-yellow-crayola);
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--border-gradient-onyx);
+  position: relative;
+  z-index: 1;
+  transition: var(--transition-1);
+}
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--eerie-black-1);
+  z-index: -1;
+}
+
+.social-link:hover {
+  background: var(--bg-gradient-yellow-1);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* X logo styling */
+.x-logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.x-logo {
+  width: 16px;
+  height: 16px;
+  color: var(--orange-yellow-crayola);
+}
+
+
+
+
+
+/*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
 
@@ -1316,6 +1378,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar {
     max-height: 180px;
     margin-bottom: 30px;
+    min-width: 320px; /* Reduced from 520px to a more reasonable size */
+    width: auto; /* Allow width to be determined by content */
+    max-width: 520px; /* Added max-width to prevent excessive width */
   }
 
   .sidebar.active { max-height: 584px; }
@@ -1350,6 +1415,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .contact-info {
     max-width: calc(100% - 64px);
     width: calc(100% - 64px);
+    padding-right: 10px; /* Added padding to prevent text from touching edge */
   }
 
 
