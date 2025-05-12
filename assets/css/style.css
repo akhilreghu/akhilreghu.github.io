@@ -156,9 +156,6 @@ article {
   padding: 15px;
   box-shadow: var(--shadow-1);
   z-index: 1;
-  width: 92%; /* Set consistent width for all panels on mobile */
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .separator {
@@ -288,24 +285,11 @@ article.active {
 \*-----------------------------------*/
 
 main {
-  margin-bottom: 30px;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  min-height: calc(100vh - 80px);
-  overflow: visible;
-  padding: 15px 0;
-}
-
-/* Main content container for proper spacing */
-.main-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 15px 12px;
+  margin-bottom: 75px;
+  min-width: 300px; /* Updated minimum width */
+  padding: 0 10px; /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 
@@ -321,7 +305,8 @@ main {
   max-height: 112px;
   overflow: hidden;
   transition: var(--transition-2);
-  min-width: 280px;
+  min-width: 260px; /* Reduced minimum width from 300px */
+  width: auto; /* Allow width to be determined by content */
 }
 
 .sidebar.active { max-height: 405px; }
